@@ -1,52 +1,76 @@
 package domain;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.DoubleStream;
 
-public class PermanentTask extends AbstractTask {
+public class PermanentTask extends Task implements Serializable {
 
-    private String repeatability;
+    private static final long serialVersionUID = 1L;
 
-       public PermanentTask() {
+    public PermanentTask() {
     }
 
-    public static String print() {
-        return null;
+    private Set<Priority> priorities = new HashSet<>();
+    private Set<Category> categories = new HashSet<>();
+
+    public PermanentTask(String title, String description, int deadline, boolean installed) {
+        super(title, description, deadline, installed);
+        priorities.addAll(priorities);
+        categories.addAll(categories);
     }
 
-    public String getRepeatability() {
-        return repeatability;
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
-    public void setRepeatability(String repeatability) {
-        this.repeatability = repeatability;
+    public Set<Priority> getPriorities() {
+        return priorities;
     }
-    public PermanentTask (String title, String description) {
-        super(title, description);
+
+    public void addPriorities(Priority priority) {
+        priorities.add(priority);
+    }
+
+    public void deletePriorities(Priority priority) {
+        priorities.remove(priority);
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+    public void addCategories(Category category) {
+        categories.add(category);
+    }
+
+    public void deleteCategories(Category category) {
+        categories.remove(category);
     }
 
     @Override
-    public void deleted() {
-
+    public boolean installed() {
+        return false;
     }
 
     @Override
-    public void repeat() {
-        System.out.println("You should repeat Task " + title + " for" + repeatability + "times");
-    }
-
-    @Override
-    public void notifying() {
-
-    }
-
-    @Override
-    public void TaskCompleted() {
+    public void add(Task task) {
 
     }
 
     @Override
     public String toString() {
-        return "PermanentTask" +
-                " title='" + title + '\'' +
+        return "PermanentTask{" +
+                "priorities=" + priorities +
+                ", categories=" + categories +
+                ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
+                ", deadline=" + deadline +
+                ", installed=" + installed +
                 '}';
+    }
+
+    @Override
+    public DoubleStream stream() {
+        return null;
     }
 }

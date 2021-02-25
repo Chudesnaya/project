@@ -2,7 +2,7 @@ package user;
 
 import java.util.Objects;
 
-public class User <T> {
+public class User<T> {
 
         private T userId;
         private int password;

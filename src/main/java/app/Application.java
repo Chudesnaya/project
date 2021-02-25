@@ -17,11 +17,12 @@ public class Application {
 
         User newUserOne = new User();
 
-        PermanentTask newPermanentTaskOne = new PermanentTask("Hygienic", "Clean teeth, take a shower");
+        PermanentTask newPermanentTaskOne = new PermanentTask("Hygienic", "Clean teeth, take a shower", 0,true);
         priorities.add(Priority.HIGH);
         categories.add(Category.SELFCARE);
 
 
         System.out.println(newPermanentTaskOne);
     }
+
 }
